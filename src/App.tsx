@@ -74,7 +74,7 @@ export function App() {
       </header>
 
       <main className="workspace">
-        <aside className="sidebar sidebar-tools">
+        <aside className="sidebar sidebar-tools materials-sidebar">
           <MaterialLibrary
             materials={materialList}
             draggedMaterialType={draggedMaterialType}

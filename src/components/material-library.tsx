@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
 import {
-  AppstoreOutlinedIcon,
-  BorderOutlinedIcon,
-  CalendarOutlinedIcon,
-  CaretDownOutlinedIcon,
-  CheckCircleOutlinedIcon,
-  FontSizeOutlinedIcon,
-  HighlightOutlinedIcon,
-} from './ant-icons';
+  CalendarDays,
+  ChevronsUpDown,
+  CircleDot,
+  LayoutGrid,
+  RectangleHorizontal,
+  Sparkles,
+  Type,
+} from 'lucide-react';
 import type { MaterialDefinition } from '../core/types';
 
 type MaterialLibraryProps = {
@@ -26,7 +26,7 @@ export function MaterialLibrary({
   onMaterialDragEnd,
 }: MaterialLibraryProps) {
   return (
-    <section className="panel">
+    <section className="panel materials-panel">
       <div className="panel-header">
         <h2>物料区</h2>
         <span>拖到画布创建</span>
@@ -47,7 +47,7 @@ export function MaterialLibrary({
             onDragEnd={onMaterialDragEnd}
           >
             <span className="material-icon-glyph">{getMaterialGlyph(material.icon)}</span>
-            <strong>{material.title}</strong>
+            <strong className="material-icon-label">{material.title}</strong>
           </button>
         ))}
       </div>
@@ -57,14 +57,14 @@ export function MaterialLibrary({
 
 function getMaterialGlyph(icon: string): ReactNode {
   const glyphMap: Record<string, ReactNode> = {
-    Layout: <BorderOutlinedIcon />,
-    Type: <FontSizeOutlinedIcon />,
-    Pointer: <HighlightOutlinedIcon />,
-    Sparkles: <AppstoreOutlinedIcon />,
-    Select: <CaretDownOutlinedIcon />,
-    Calendar: <CalendarOutlinedIcon />,
-    Radio: <CheckCircleOutlinedIcon />,
+    Layout: <LayoutGrid size={20} strokeWidth={1.9} />,
+    Type: <Type size={20} strokeWidth={1.9} />,
+    Pointer: <RectangleHorizontal size={20} strokeWidth={1.9} />,
+    Sparkles: <Sparkles size={20} strokeWidth={1.9} />,
+    Select: <ChevronsUpDown size={20} strokeWidth={1.9} />,
+    Calendar: <CalendarDays size={20} strokeWidth={1.9} />,
+    Radio: <CircleDot size={20} strokeWidth={1.9} />,
   };
 
-  return glyphMap[icon] ?? <AppstoreOutlinedIcon />;
+  return glyphMap[icon] ?? <RectangleHorizontal size={20} strokeWidth={1.9} />;
 }
