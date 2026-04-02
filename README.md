@@ -9,6 +9,13 @@ npm install
 npm run dev
 ```
 
+本地预览生产包：
+
+```bash
+npm run build
+npm run preview
+```
+
 ## 当前能力
 
 - 左侧物料区，支持按注册表新增组件
@@ -41,3 +48,44 @@ npm run dev
 - 增加数据源面板、接口绑定和变量系统
 - 增加 schema 校验与版本迁移策略
 - 拆出 renderer 包与 editor 包，支持运行时独立部署
+
+## 部署到公网
+
+这个项目已经补好了 `Vercel` 部署配置，默认可以直接发布为静态站点。
+
+### 方式一：通过 Vercel 控制台
+
+1. 登录 Vercel 并绑定 GitHub
+2. 导入仓库 `jeremyccccc/low-code-studio`
+3. 保持默认识别为 `Vite`
+4. 构建命令使用 `npm run build`
+5. 输出目录使用 `dist`
+6. 点击 Deploy
+
+部署完成后，Vercel 会生成一个公网访问地址。后续每次推送到 GitHub，都可以自动触发重新部署。
+
+### 方式二：通过 Vercel CLI
+
+先安装 CLI：
+
+```bash
+npm install -g vercel
+```
+
+然后在项目根目录执行：
+
+```bash
+vercel
+```
+
+首次部署完成后，如果要发正式地址：
+
+```bash
+vercel --prod
+```
+
+### 说明
+
+- 当前项目是单页应用，`vercel.json` 已经包含 SPA rewrite，直接刷新子路径不会 404
+- 当前项目没有必须的环境变量，可以直接部署
+- 如果只是想先在本机确认生产效果，可以使用 `npm run build && npm run preview`
