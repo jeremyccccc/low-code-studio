@@ -52,6 +52,7 @@ export function App() {
         <div>
           <p className="eyebrow">React Low Code Studio</p>
           <h1>可扩展的低代码平台骨架</h1>
+          <p className="eyebrow">Auto Deploy Check 2026-04-02</p>
         </div>
         <div className="topbar-actions">
           <button onClick={() => editorStore.undo()} disabled={snapshot.historyIndex === 0}>
